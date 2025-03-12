@@ -19,7 +19,7 @@ try:
     if 'Region' not in df.columns or 'Sales' not in df.columns:
         st.error("Error: 'Region' or 'Sales' column not found in the DataFrame.")
     else:
-        fig = px.bar(df, x='Region', y='Sales', title='Sales per Region')
+        fig = px.bar(df, x='Region', y='Sales', title='Sales por Region')
         st.plotly_chart(fig)
 
 except FileNotFoundError:
