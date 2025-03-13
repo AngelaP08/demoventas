@@ -26,3 +26,14 @@ except FileNotFoundError:
     st.error("Error: 'SalidaFinal.xlsx' not found. Please check the file path.")
 except Exception as e:
     st.error(f"An error occurred: {e}")
+
+# prompt: usando el dataframe df, crear un filtro con la columna Region
+
+# Assuming 'Region' is a column in your DataFrame.
+# Replace 'Region' with the actual column name if different.
+if 'Region' in df.columns:
+    region_filter = st.selectbox("Select Region", df['Region'].unique())
+    filtered_df = df[df['Region'] == region_filter]
+    st.write(filtered_df)
+else:
+    st.error("Error: 'Region' column not found in the DataFrame.")
