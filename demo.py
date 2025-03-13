@@ -27,24 +27,17 @@ except FileNotFoundError:
 except Exception as e:
     st.error(f"An error occurred: {e}")
 
-# prompt: usando el dataframe df, crear un filtro con la columna Region
+# prompt: usando el dataframe df, crear un filtro con la columna Region, y dentro de ese filtro crear otro filtro con la columna State
 
-# Assuming 'Region' is a column in your DataFrame.
-# Replace 'Region' with the actual column name if different.
-if 'Region' in df.columns:
+# Assuming 'Region' and 'State' are column names in your DataFrame.
+# Replace with your actual column names if different.
+if 'Region' in df.columns and 'State' in df.columns:
     region_filter = st.selectbox("Select Region", df['Region'].unique())
-    filtered_df = df[df['Region'] == region_filter]
-    st.write(filtered_df)
-else:
-    st.error("Error: 'Region' column not found in the DataFrame.")
+    filtered_df_region = df[df['Region'] == region_filter]
 
-# prompt: usando el dataframe df, crear un filtro con la columna State
+    state_filter = st.selectbox("Select State", filtered_df_region['State'].unique())
+    filtered_df_state = filtered_df_region[filtered_df_region['State'] == state_filter]
 
-# Assuming 'State' is a column in your DataFrame.
-# Replace 'State' with the actual column name if different.
-if 'State' in df.columns:
-    state_filter = st.selectbox("Select State", filtered_df['State'].unique())
-    filtered_df = filtered_df[filtered_df['State'] == state_filter]
-    st.write(filtered_df)
+    st.write(filtered_df_state)
 else:
-    st.error("Error: 'State' column not found in the DataFrame.")
+    st.error("Error: 'Region' or 'State' column not found in the DataFrame.")
