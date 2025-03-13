@@ -37,3 +37,14 @@ if 'Region' in df.columns:
     st.write(filtered_df)
 else:
     st.error("Error: 'Region' column not found in the DataFrame.")
+
+# prompt: usando el dataframe df, crear un filtro con la columna State
+
+# Assuming 'State' is a column in your DataFrame.
+# Replace 'State' with the actual column name if different.
+if 'State' in df.columns:
+    state_filter = st.selectbox("Select State", df['State'].unique())
+    filtered_df = df[df['State'] == state_filter]
+    st.write(filtered_df)
+else:
+    st.error("Error: 'State' column not found in the DataFrame.")
