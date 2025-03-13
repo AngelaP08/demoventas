@@ -27,21 +27,6 @@ except FileNotFoundError:
 except Exception as e:
     st.error(f"An error occurred: {e}")
 
-# prompt: usando el dataframe df, crear un filtro con la columna Region, y dentro de ese filtro crear otro filtro con la columna State
-
-# Assuming 'Region' and 'State' are column names in your DataFrame.
-# Replace with your actual column names if different.
-if 'Region' in df.columns and 'State' in df.columns:
-    region_filter = st.selectbox("Select Region", df['Region'].unique())
-    filtered_df_region = df[df['Region'] == region_filter]
-
-    state_filter = st.selectbox("Select State", filtered_df_region['State'].unique())
-    filtered_df_state = filtered_df_region[filtered_df_region['State'] == state_filter]
-
-    st.write(filtered_df_state)
-else:
-    st.error("Error: 'Region' or 'State' column not found in the DataFrame.")
-
 # prompt: usando el dataframe df, crea un filtro con streamlit de la columna Region, y otro filtro con los resultados del filtro Region, usando la columna State. Tambien crea una grafica de pastel con la columna Category considerando los primeros filtros
 
 # Assuming 'Region', 'State', and 'Category' are column names in your DataFrame.
