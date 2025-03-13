@@ -41,3 +41,13 @@ if 'Region' in df.columns and 'State' in df.columns:
     st.write(filtered_df_state)
 else:
     st.error("Error: 'Region' or 'State' column not found in the DataFrame.")
+
+# prompt: usando el dataframe df, crea un filtro con streamlit de la columna Region, y otro filtro con los resultados del filtro Region, usando la columna State. Tambien crea una grafica de pastel con la columna Category
+
+# Assuming 'Category' is a column in your DataFrame.
+# Replace 'Category' with the actual column name if different.
+if 'Category' in df.columns:
+    fig_pie = px.pie(df, names='Category', title='Distribution of Categories')
+    st.plotly_chart(fig_pie)
+else:
+    st.error("Error: 'Category' column not found in the DataFrame.")
